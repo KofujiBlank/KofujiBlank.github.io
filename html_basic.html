@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="LinkElement.css">
+		<title>主な要素</title>
+		<!--見た目
+		<style>
+		* { font-size:12px;
+		}
+		h1 { font-style:italic;
+			 font-size:22px;
+		}
+		p { color:white;
+			background-color: blue;
+		}
+		#comment { color:green;
+		}
+		.even { color: purple;
+		}
+		.odd { color: red;
+		}
+		</style>
+		-->
+		<script>
+		function calc() {
+			var w = document.getElementById("weight").value;
+			var h = document.getElementById("height").value;
+			var r = w / (h*h);  // BMI＝体重/身長の２乗
+			document.getElementById("result").textContent = "あなたのBMIは" + r + "です";
+		}
+		
+		function checkEven() {
+			var v = document.getElementById("number").value;
+			var r = document.getElementById("result_1");
+			if(isNaN(v)){
+				r.textContent = v + "は数字ではありません";
+				} else {
+				r.textContent = v + "は数字です";
+				}
+		}
+				
+		</script>
+	</head>
+
+	<body>
+<h1>HelloWorld</h1>
+<div id="face" style="left:300px;">
+	<div class="eye" style="left:50px;"></div><div class="eye" style="left:130px;"></div>
+	<div class="cheek" style="left:30px;"></div><div class="cheek" style="left:130px;"></div>
+	<div class="nose" style="left:70px;"></div>
+</div>
+
+
+
+<h1>目次</h1>
+		<ol>
+			<li><a href="#title">HTML基礎</a></li>
+			<li><a href="#JS_basic">JS基礎</a></li>
+			<li><a href="#error">よくあるエラー</a></li>
+			<li><a href="#cascade">カスケード</a></li>
+			<li><a href="#CSS_basic">CSSの基礎</a></li>
+		</ol>
+
+
+
+
+		<h1 id="title">HTMLの基礎</h1>
+<p>		あるタグは別のタグに完全に含ま れる </p>
+
+<p>		一番 外側 には html 要素 が ある</p>
+
+<p>		HTML文書が読み込まれるとその文書のHTML要素が<i>document</i>という変数に保持される<br>
+		このdocumentを起点としてJavaScriptからHTMLの各要素にアクセスできる(DOM)</p>
+<h1 id="cascade">カスケード</h1>
+<p>カスケードとは滝が流れる、流れ落ちるというイメージを表す。
+<br>＝親要素にスタイルを設定すると子要素も適用される</p>
+
+</p>
+		<h2>副題</h2>
+		<p>パラグラフです。一部をマーキングする場合は<span>スパン</span>を使います</p>
+		<h3>番号付きリスト</h3>
+		<ol>
+			<li>野菜を切る</li>
+			<li>炒める</li>
+			<li>盛り付ける</li>
+		</ol>
+		<h3>箇条書き</h3>
+		<ul>
+			<li>HTML基礎</li>
+			<li>CSS基礎</li>
+		</ul>
+		<button>OK</button>
+		<button>NG</button>
+		
+		<table bobrder ="1">
+			<tr class="even">
+				<td>/</td>
+				<td>月</td>
+				<td>火</td>
+				<td>水</td>
+				<td>木</td>
+				<td>金</td>
+			</tr>
+			<tr class="odd">
+				<td>午前</td>
+				<td>理</td>
+				<td>国</td>
+				<td>算</td>
+				<td>英</td>
+				<td>社</td>
+			</tr>
+			<tr class="even">
+				<td>午後</td>
+				<td>英</td>
+				<td>国</td>
+				<td>理</td>
+				<td>算</td>
+				<td>社</td>
+			</tr>
+		</table>
+		<p>anchorは文書間を簡単に<a href="index.html">リンク</a>付けする</p>
+		
+		<img src="sample.png">
+
+<!--		<script>document.getElementById("title").textContent="Hello world";</script> -->
+<h1 id="JS_basic">BMIの計算</h1>
+<p>一般にスクリプトはheadの中に記述</p>
+	体重[kg]:<input id="weight"/><br>
+	身長[m] :<input id="height"/><br>
+	<button onclick="calc()">計算</button>
+	<p id="result"></p>
+	<input id="number">
+	<button onclick="checkEven()">入力判定</button>
+	<p id="result_1"></p>
+<h1 id="error">よくあるエラー</h1>
+<ul>
+	<li>タイプミス</li>
+	<li>括弧の対応、終端記号の欠如</li>
+	<li>無限ループ</li>
+</ul>
+
+
+<h1 id="CSS_basic">CSSの基礎</h1>
+<p>【基本文法】<br>
+セレクタ｛<br>
+	プロパティ名：値；<br>
+｝</p>
+<ul>
+	<li>全称セレクタ「*」</li>
+	<li>タイプセレクタ「要素名」</li>
+	<li>idセレクタ「#id」</li>
+	<li>クラスセレクタ「.クラス名」</li>
+</ul>
+<h3> ブロックレベル要素とインライン要素</h3>
+<p>配置の仕組みが異なる</p>
+<p>
+ページをレイアウトするときは、まずブロックレベルの要素を使って大まかなレイアウトを整え、<br>
+その中にインライン要素を流し込んでいく</p>
+
+<u>インライン要素:&lt;a>&lt;span&gt;&lt;button&gt;&lt;input&gt;&lt;img&gt;など</u>
+<ul>
+<li>横方向に配置</li>
+<li>親要素(もしくはページ幅)に到達すると改行され、また行の先頭から追加される</li>
+		<table bobrder ="3">
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>5</td>
+				<td>…</td>
+			</tr>
+		</table>
+</ul>
+<u>ブロックレベル要素:&lt;h1>&lt;h2&gt;&lt;p&gt;&lt;div&gt;&lt;ol&gt;&lt;ul&gt;&lt;li&gt;など</u>
+<ul>
+<li><b>長方形</b>(=幅と高さを持つ)としての領域を確保し、縦型に追加されていく</li>
+	<table bobrder ="3">
+			<tr>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>2</td>
+			</tr>
+			<tr>
+				<td>3</td>
+			</tr>
+				<td>…</td>
+			</tr>
+		</table>
+<li>ボックスモデルでのスタイルを指定できるのはブロックレベルのものだけ</li>
+<li>ボックスモデルにはmargin,border,padding,height,widthなどいろいろなスタイルを指定できる</li>
+<li>marginは他の要素との距離を調整する</li>
+<li>position:absolute; 全てのdivをtop/leftで絶対位置指定</li>
+</ul>
+<u>色や長さの指定</u>
+<ul>
+<li>px:点一つ分</li>
+<li>pt:1pt=1/72インチ</li>
+<li>cm</li>
+<li>vw:画面全体の幅を100とした値</li>
+<li>vh:画面全体の高さを100とした値</li>
+<li>em:フォントの[m]の大きさの何倍かで指定</li>
+<li>%:親要素のサイズの何パーセントか</li>
+</ul>
+	</body>
+</html>
