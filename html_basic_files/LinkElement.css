@@ -15,7 +15,7 @@ p { color:white;
 
 #face {
 	position:absolute;
-	//border-radius
+	/*border-radius*/
 	width:200px;
 	height:200px;
 	background-color:#fce2c4;
@@ -40,4 +40,18 @@ p { color:white;
 	width:60px;
 	height:60px;
 	background-color:yellow;
+}
+.cell {
+	width:100px;
+	height:100px;
+	font-size:30pt;
+	text-align:center;
+}
+
+#ufo {
+	position:absolute;
+	width:60px;
+	height:25px;
+	color:green;
+	top:50px;
 }

@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="LinkElement.css">
-		<title>主な要素</title>
+		<link rel="stylesheet" href="html_basic_files/LinkElement.css">
+		<title>WEB基礎</title>
 		<!--見た目
 		<style>
 		* { font-size:12px;
@@ -39,11 +39,65 @@
 				r.textContent = v + "は数字です";
 				}
 		}
-				
+		
+		var count = 0;
+		function clickMe(e) {
+			if (count++ % 2 == 0) {
+				e.textContent = "〇";
+			} else {
+				e.textContent = "×";
+			}
+		}
+		<!--UFO  Game-->
+		var ufo, newufo;
+		function init() {
+			window.addEventListener("keydown", keydown);
+			ufo = new UFO(document.getElementById("ufo"), 100);
+			NewUFO.prototype = ufo;
+			newufo = new NewUFO(1750);
+		}
+		function keydown(e) {
+			if (e.keyCode == 37) {
+				newufo.moveLeft();
+			}else if (e.keyCode == 39) {
+				newufo.moveRight();
+			}else if (e.keyCode == 38) {
+				newufo.moveUp();
+			}else if (e.keyCode == 40) {
+				newufo.moveDown();
+			}
+		}
+		function UFO(_elem, _xpos) {
+			this.elem = _elem;
+			this.xpos = _xpos;
+			this.moveLeft = function() {
+				this.xpos -= 10;
+				this.elem.style.left = this.xpos + "px";
+			}
+			this.moveRight = function() {
+				this.xpos += 10;
+				this.elem.style.left = this.xpos + "px";
+			}
+			this.elem.style.left = this.xpos + "px";
+		}
+		
+		function NewUFO(_ypos) {
+			this.ypos = _ypos;
+			this.moveUp = function() {
+				this.ypos -= 20;
+				this.elem.style.top = this.ypos + "px";
+			}
+			this.moveDown = function() {
+				this.ypos += 20;
+				this.elem.style.top = this.ypos + "px";
+			}
+			this.elem.style.top = this.ypos + "px";
+		}
 		</script>
 	</head>
 
-	<body>
+<body onload="init()">
+
 <h1>HelloWorld</h1>
 <div id="face" style="left:300px;">
 	<div class="eye" style="left:50px;"></div><div class="eye" style="left:130px;"></div>
@@ -62,9 +116,6 @@
 			<li><a href="#CSS_basic">CSSの基礎</a></li>
 		</ol>
 
-
-
-
 		<h1 id="title">HTMLの基礎</h1>
 <p>		あるタグは別のタグに完全に含ま れる </p>
 
@@ -76,7 +127,6 @@
 <p>カスケードとは滝が流れる、流れ落ちるというイメージを表す。
 <br>＝親要素にスタイルを設定すると子要素も適用される</p>
 
-</p>
 		<h2>副題</h2>
 		<p>パラグラフです。一部をマーキングする場合は<span>スパン</span>を使います</p>
 		<h3>番号付きリスト</h3>
@@ -93,7 +143,7 @@
 		<button>OK</button>
 		<button>NG</button>
 		
-		<table bobrder ="1">
+		<table border ="1">
 			<tr class="even">
 				<td>/</td>
 				<td>月</td>
@@ -119,13 +169,14 @@
 				<td>社</td>
 			</tr>
 		</table>
-		<p>anchorは文書間を簡単に<a href="index.html">リンク</a>付けする</p>
+		<p>anchorは文書間を簡単に<a href="/index.html">リンク</a>付けする</p>
 		
-		<img src="sample.png">
+		<img src="html_basic_files/sample.png">
 
 <!--		<script>document.getElementById("title").textContent="Hello world";</script> -->
-<h1 id="JS_basic">BMIの計算</h1>
+<h1 id="JS_basic">JavaScript基礎</h1>
 <p>一般にスクリプトはheadの中に記述</p>
+BMIの計算<br>
 	体重[kg]:<input id="weight"/><br>
 	身長[m] :<input id="height"/><br>
 	<button onclick="calc()">計算</button>
@@ -133,6 +184,25 @@
 	<input id="number">
 	<button onclick="checkEven()">入力判定</button>
 	<p id="result_1"></p>
+	<table border="1">
+	<tr>
+		<td class="cell" onclick="clickMe(this);">
+		<td class="cell" onclick="clickMe(this);">
+		<td class="cell" onclick="clickMe(this);">
+	</tr>
+	<tr>
+		<td class="cell" onclick="clickMe(this);">
+		<td class="cell" onclick="clickMe(this);">
+		<td class="cell" onclick="clickMe(this);">
+	</tr>
+	<tr>
+		<td class="cell" onclick="clickMe(this);">
+		<td class="cell" onclick="clickMe(this);">
+		<td class="cell" onclick="clickMe(this);">
+	</tr>
+	</table>
+UFO Game
+	<div id="ufo"><(ooo)></div>
 <h1 id="error">よくあるエラー</h1>
 <ul>
 	<li>タイプミス</li>
@@ -162,7 +232,7 @@
 <ul>
 <li>横方向に配置</li>
 <li>親要素(もしくはページ幅)に到達すると改行され、また行の先頭から追加される</li>
-		<table bobrder ="3">
+		<table border ="3">
 			<tr>
 				<td>1</td>
 				<td>2</td>
@@ -178,7 +248,7 @@
 <u>ブロックレベル要素:&lt;h1>&lt;h2&gt;&lt;p&gt;&lt;div&gt;&lt;ol&gt;&lt;ul&gt;&lt;li&gt;など</u>
 <ul>
 <li><b>長方形</b>(=幅と高さを持つ)としての領域を確保し、縦型に追加されていく</li>
-	<table bobrder ="3">
+	<table border ="3">
 			<tr>
 				<td>1</td>
 			</tr>
