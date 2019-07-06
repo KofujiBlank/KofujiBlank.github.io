@@ -42,7 +42,13 @@
 		
 		var count = 0;
 		function clickMe(e) {
-			if (count++ % 2 == 0) {
+			if (count>9) {
+				var retry = confirm("RETRY?");
+				if (retry) {
+				document.getElementByClassName("cell").textContent = " "
+				} else {
+				}
+			} else if(count++ % 2 == 0) {
 				e.textContent = "〇";
 			} else {
 				e.textContent = "×";
@@ -93,6 +99,60 @@
 			}
 			this.elem.style.top = this.ypos + "px";
 		}
+		<!--配列の要素を乱数で並べ替える-->
+		Array.prototype.shuffle = function(){
+			var i = this.length;
+			while(i){
+				var j = Math.floor(Math.random() * i );
+				var t = this[--i];
+				this[i] = this[j];
+				this[j] = t;
+			}
+			return this;
+		}
+		function shuffle() {
+			var cards = [1,1,2,2,3,3,4,4,5,5,6,6];
+			cards.shuffle();
+			document.getElementById("result_2").textContent = cards.join(",");
+		}
+		<!--組み込みオブジェクト-->
+		var timerId;
+		function timeoutStart() {
+			timerId = setTimeout(whattime,3000);
+		}
+		function timeoutStop() {
+			clearTimeout(timerId);
+		}
+		function intervalStart(){
+			clearInterval(timerId);
+			timerId = setInterval(whattime,2000);
+		}
+		function intervalStop(){
+			clearInterval(timerId);
+		}
+		function whattime() {
+			document.getElementById("info").textContent = new Date();
+		}
+		<!--Mathメソッド-->
+		function minmax() {
+			var n = document.getElementById("randomRange").value;
+			var a = Math.min(3, n); //3とnの小さいほうをaに代入
+			var b = Math.max(3, n); //大きいほう々
+			var c = Math.max(3, Math.min(6,n)); //3以上6以下
+			var s = "n= " + n + " min(3, n) = " + a + " max(3,n)= " + b + " c= " + c;
+			document.getElementById("info_1").textContent = s;
+		}
+		function random() {
+			var n = document.getElementById("randomRange").value;
+			var a = Math.random(); //0から1の乱数生成
+			var b = Math.floor(a * n) //n倍して切り捨て
+			var s ="n= " + n + " a= " +  a + " b= " + b;
+			document.getElementById("info_1").textContent = s;
+			Math.sqrt(n)
+		}
+		var r0 = data.length; //配列に含まれる要素の数
+		var r1 = data.indexOf(2) //index(検索対象[検索位置])
+		
 		</script>
 	</head>
 
@@ -201,8 +261,19 @@ BMIの計算<br>
 		<td class="cell" onclick="clickMe(this);">
 	</tr>
 	</table>
-UFO Game
-	<div id="ufo"><(ooo)></div>
+UFO 
+	<div id="ufo"><(ooo)></div><br>
+<button onclick="shuffle()">shuffle</button><br>
+<button onclick="timeoutStart()">setTimeout</button>
+<button onclick="timeoutStop()">clearTimeout</button>
+<button onclick="intervalStart()">setInterval</button>
+<button onclick="intervalStop()">clearInterval</button>
+<p id="info"></p>
+<p id="result_2"></p>
+<input type="range" min="0" max="10" id="randomRange">
+<button onclick="minmax()">min/max</button>
+<button onclick="random()">random</button>
+<p id="info_1"></p>
 <h1 id="error">よくあるエラー</h1>
 <ul>
 	<li>タイプミス</li>
